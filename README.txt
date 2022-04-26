@@ -3,24 +3,18 @@
 
 
 
+Files:
 
-***[ Files ]***
+There are 4 python files
 
 There are three python files in this folder:
 
-- (lm.py): This file describes the higher level interface for a language model, and contains functions to train, query, and evaluate it. An implementation of a simple back-off based unigram model is also included, that implements all of the functions
-of the interface.
+- (lm.py): This file describes the higher level interface for a language model, and contains functions to train, query, and evaluate it. An implementation of a simple back-off based unigram model is also included, that implements all of the functions of the interface. In this file I have implemented one class for Trigram + Laplace Smoothing.
 
 - (generator.py): This file contains a simple word and sentence sampler for any language model. Since it supports arbitarily complex language models, it is not very efficient. If this sampler is incredibly slow for your language model, you can consider implementing your own (by caching the conditional probability tables, for example, instead of computing it for every word).
 
--  (data.py): The primary file to run. This file contains methods to read the appropriate data files from the archive, train and evaluate all the unigram language models (by calling “lm.py”), and generate sample sentences from all the models (by calling  “generator.py”). It also saves the result tables into LaTeX files.
+-  (data.py): The primary file to run. In this file it contains different functions to run the code. If you want to vary training data, please use this function def learn_variable_unigram() and pass the training data. If you want to run unigram model use def learn_ungram() function for unigram model. To implement trigram + Laplace smoothing model there is a function def learn_trigram(), to build trigram model. This file builds model, internally calls generator sampler to generate sentences, it also contains analysis of in-domain as well as out-of domain model analysis.
 
-*** [ Tabulate ]***
+- adaptationBonus.py: This file contains code for training model on full dataset A and partial fraction of dataset B, you can vary the size of partial dataset to compare models.
 
-The one *optional* dependency we have in this code is `tabulate` ([documentation](https://pypi.python.org/pypi/tabulate)), which you can install using a simple `pip install tabulate`.
-This package is quite useful for generating the results table in LaTeX directly from your python code, which is a practice we encourage all of you to incorporate into your research as well.
-If you do not install this package, the code does not write out the results to file (and you might get no runtime error).
-
-
-*** [ Acknowledgements ]***
-Python files adapted from a similar assignment by Sameer Singh
+There is jupyter notebook file for Visualization and Analysis of graphs. It contains all line plot, heat map and plots to visualize and get a comprehensive view of the project.
